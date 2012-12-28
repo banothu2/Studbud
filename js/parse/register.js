@@ -29,6 +29,7 @@ $(document).ready( //waits for the document to load and all files to render
 						//Ran into an error 
 						//Say what the error is -- add something later
 						// for debugging purposes - state what error is:
+						$("#error").empty();
 						$("#error").append("<div class='alert alert-error'> Oh snap! Change a few things up and try submitting again.</div>");
 					}
 				});

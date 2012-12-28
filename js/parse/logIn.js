@@ -12,7 +12,7 @@ if (currentUser) {
 					Parse.User.logIn($("#inputUsername").val(), $("#inputPassword").val(), { //$("#inputUsername").val(), $("#inputPassword").val()
 						success: function(user) {
 							//if login success, then redirect page to index.html
-							window.location.replace("register.html");
+							window.location.replace("../docs/index.html");
 
 						},
 						error: function(user, error) {
@@ -21,6 +21,7 @@ if (currentUser) {
 					    //document.getElementById("loginError").innerHTML="<div class='alert alert-error'> The Username and password did not match! Please try again </div>";
 
 							//Login Failed - display error right now for debugging purposes
+							$("#error").empty();
 							$("#error").append("<div class='alert alert-error'> Oh snap! The username and password did not match! Try again!</div>");
 
 						}

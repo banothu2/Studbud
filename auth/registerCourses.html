@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Study Buddy &middot; Log In</title>
+    <title>Study Buddy &middot; Register Courses</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -16,8 +16,8 @@
         background-color: #f5f5f5;
       }
 
-      .form-signin {
-        max-width: 300px;
+      .form-register {
+        max-width: 500px;
         padding: 19px 29px 29px;
         margin: 0 auto 20px;
         background-color: #fff;
@@ -29,18 +29,19 @@
            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
                 box-shadow: 0 1px 2px rgba(0,0,0,.05);
       }
-      .form-signin .form-signin-heading,
-      .form-signin .checkbox {
-        margin-bottom: 10px;
+      .form-register .form-register-heading{
+        text-align: center;
+        margin-bottom: 30px;
       }
-      .form-signin input[type="text"],
-      .form-signin input[type="password"] {
+      .form-register input[type="text"],
+      .form-register input[type="email"],
+      .form-register input[type="password"] {
         font-size: 16px;
         height: auto;
         margin-bottom: 15px;
-        padding: 7px 9px;
+        padding: 4px 9px;
       }
-      .form-signin button[type="margin"]{
+      .form-register button[type="margin"]{
         margin-bottom: 15px;
       }
 
@@ -62,7 +63,7 @@
       <!-- jquery, parse, and login javascript files -->
       <script type="text/javascript" src="../js/parse/jquery-1.8.3.min.js"></script>
       <script type="text/javascript" src="../js/parse/parse-1.1.15.js"></script>
-      <script type="text/javascript" src="../js/parse/logIn.js"></script>
+      <script type="text/javascript" src="../js/parse/registerCourses.js"></script>
 
       <link href="../docs/assets/css/docs.css" rel="stylesheet">
       <link href="../docs/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
@@ -87,7 +88,7 @@
               <li class="">
                 <a href="../docs/index.html">Home</a>
               </li>
-              <li class="active">
+              <li class="">
                 <a href="logIn.html">Login</a>
               </li>
               <li class="">
@@ -112,16 +113,29 @@
     </div>
 
     <hr class = "soften">
+    <div class="container form-register">
+        <form class="form-horizontal" id="register">
 
-    <div class="container">
+          <h2 class="form-register-heading" ></h2>
+          <h4 class="form-register-heading">Please add your semester courses</h4>
 
-      <form class="form-signin" id="logIn">
-        <h2 class="form-signin-heading">Please log in</h2>
-        <input type="text" class="input-block-level" id="inputUsername" placeholder="Username">
-        <input type="password" class="input-block-level" id="inputPassword" placeholder="Password">
-        <button type="margin" class="btn btn-large btn-block btn-primary" type="submit" data-loading-text="Loading...">log in</button>
-        <div id="error"></div>
-      </form>
+          <div class="control-group" id="courseOneDiv"></div>
+          <div class="control-group" id="courseTwoDiv"></div>
+          <div class="control-group" id="courseThreeDiv"></div>
+          <div class="control-group" id="courseFourDiv"></div>
+          <div class="control-group" id="courseFiveDiv"></div>
+          <div class="control-group" id="courseSixDiv"></div>
+          <div class="control-group" id="courseSevenDiv"></div>
+                    <div id="errorOrSuccess"></div>
+
+        </form>
+
+          <div id="buttonAdd">
+            <button type="margin" class="btn btn-large btn-block btn-primary" type="button">Register</button>
+          </div>
+
+
+        
     </div> <!-- /container -->
 
     <hr class = "soften">
