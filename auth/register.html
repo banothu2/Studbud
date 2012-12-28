@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Study Buddy &middot; Log In</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="../docs/assets/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+
+      .form-register {
+        max-width: 500px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-register .form-register-heading{
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .form-register input[type="text"],
+      .form-register input[type="email"],
+      .form-register input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 4px 9px;
+      }
+      .form-register button[type="margin"]{
+        margin-bottom: 15px;
+      }
+
+    </style>
+    <link href="../docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../docs/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../docs/assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../docs/assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../docs/assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../docs/assets/ico/favicon.png">
+
+      <!-- jquery, parse, and login javascript files -->
+      <script type="text/javascript" src="../js/parse/jquery-1.8.3.min.js"></script>
+      <script type="text/javascript" src="../js/parse/parse-1.1.15.js"></script>
+      <script type="text/javascript" src="../js/parse/register.js"></script>
+
+      <link href="../docs/assets/css/docs.css" rel="stylesheet">
+      <link href="../docs/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+      <!-- end of jquery, parse, and login javascript files -->
+
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">Study Buddy</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="../docs/index.html">Home</a>
+              </li>
+              <li class="">
+                <a href="logIn.html">Login</a>
+              </li>
+              <li class="active">
+                <a href="register.html">Register</a>
+              </li>
+              <li class="">
+                <a href="forgotPass.html">Forgot Password</a>
+              </li>
+              <li class="">
+                <a href="../docs/aboutUs.html">About Us</a>
+              </li>
+              <li class="">
+                <a href="../docs/contactUs.html">Contact Us</a>
+              </li>
+              <li class="">
+                <a href="../docs/faqs.html">FAQs</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class = "soften">
+
+    <div class="container form-register">
+        <form class="form-horizontal" id="register">
+          <h2 class="form-register-heading">Please Register</h2>
+          <div class="control-group">
+            <label class="control-label" for="username">Username</label>
+            <div class="controls">
+              <input type="text" id="username" placeholder="bjohnson" required>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="firstName">First Name</label>
+            <div class="controls">
+              <input type="text" id="firstName" placeholder="Benjamin">
+            </div>
+            <label class="control-label" for="lastName">Last Name</label>
+            <div class="controls">
+              <input type="text" id="lastName" placeholder="Johnson">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+              <input type="password" id="password" placeholder="@ppl3AR3d3l1c10u5" required>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="email">Email</label>
+            <div class="controls">
+              <input type="email" id="email" placeholder="bjohnson32@illinois.edu" required>
+            </div>
+          </div>
+          <button type="margin" class="btn btn-large btn-block btn-primary" type="submit">Register</button>
+
+          <div id="error"></div>
+        </form>
+
+    </div> <!-- /container -->
+
+    <hr class = "soften">
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../docs/assets/js/jquery.js"></script>
+    <script src="../docs/assets/js/bootstrap-transition.js"></script>
+    <script src="../docs/assets/js/bootstrap-alert.js"></script>
+    <script src="../docs/assets/js/bootstrap-modal.js"></script>
+    <script src="../docs/assets/js/bootstrap-dropdown.js"></script>
+    <script src="../docs/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../docs/assets/js/bootstrap-tab.js"></script>
+    <script src="../docs/assets/js/bootstrap-tooltip.js"></script>
+    <script src="../docs/assets/js/bootstrap-popover.js"></script>
+    <script src="../docs/assets/js/bootstrap-button.js"></script>
+    <script src="../docs/assets/js/bootstrap-collapse.js"></script>
+    <script src="../docs/assets/js/bootstrap-carousel.js"></script>
+    <script src="../docs/assets/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>
