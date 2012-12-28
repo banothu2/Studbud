@@ -31,7 +31,7 @@ $(document).ready(
 		                        </li>
 		                    </ul> */
 			} else {
-				$("#navigationBar").append("<ul class='nav'><li class='active'><a href='index.html'>Home</a></li><li class=''><a href='../auth/login.html'>Login</a></li><li class=''><a href='../auth/register.html'>Register</a></li><li class=''><a href='../auth/forgotPass.html'>Forgot Password</a></li><li class=''><a href='aboutUs.html'>About Us</a></li><li class=''><a href='contactUs.html'>Contact Us</a></li><li class=''><a href='faqs.html'>FAQs</a></li></ul>");
+				$("#navigationBar").append("<ul class='nav'><li class='active'><a href='index.html'>Home</a></li><li class=''><a href='../auth/logIn.html'>Login</a></li><li class=''><a href='../auth/register.html'>Register</a></li><li class=''><a href='../auth/forgotPass.html'>Forgot Password</a></li><li class=''><a href='aboutUs.html'>About Us</a></li><li class=''><a href='contactUs.html'>Contact Us</a></li><li class=''><a href='faqs.html'>FAQs</a></li></ul>");
 			}
 	}
 );
