@@ -39,5 +39,5 @@ var currentUser = Parse.User.current(); //Checks to see if user is logged in
 	}	
 	else {
 		// redirect to login page 
-		window.location.replace("login.html");
+		window.location.replace("logIn.html");
 	}

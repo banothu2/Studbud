@@ -47,9 +47,15 @@
         zoom: 15,
         lat: 40.109165,
         lng: -88.227352,
+
         markerClusterer: function(map) {
           return new MarkerClusterer(map);
+        },
+
+        mapTypeControlOptions: {
+          mapTypeIds : ["hybrid", "roadmap", "satellite", "terrain", "osm", "cloudmade"]
         }
+
       });
 
 /*      var lat_span = 40.095988012939503 - 40.110677786181573;
@@ -73,8 +79,8 @@
       Parse.initialize("78z9KHgSR3zIeFF7soCrOiHE6D99hNTJOmnJ2oay", "E8xzL8zlCs6GFfA2kEjAuBdedyZ9vS8ErBI3vT71");
       var mapper = Parse.Object.extend("mapper");
       var query = new Parse.Query(mapper);
-
-  query.ascending("createdAt");
+      var d = new Date();
+      var dateCheck = d.getMonth() + "/" +d.getDate() + "/"+ d.getFullYear();
 
   query.find({
 
@@ -86,15 +92,20 @@
             var longitudeParse = results[i].get("longitude");
             var notes = results[i].get("notes");
             var subject = results[i].get("subject");
+            var date = results[i].get("date");
 
-              map.addMarker({
-              lat: latitudeParse,
-              lng: longitudeParse,
-              title: 'Custom' + i,
-              infoWindow: {
-                content: '<p>'+"Custom " + i+ " "+ notes + " " + subject+ " "+ '</p><p>' + latitudeParse + " " + longitudeParse + '</p>'
+                var d = new Date();
+                var dateCheck = d.getFullYear()+ ""+d.getMonth() +""+(d.getDate()-2);
+              if(date > dateCheck){
+                map.addMarker({
+                lat: latitudeParse,
+                lng: longitudeParse,
+                title: 'Custom' + i,
+                infoWindow: {
+                  content: '<p>'+"Custom " + i+ " "+ notes + " " + subject+ " "+ '</p><p>' + latitudeParse + " " + longitudeParse + '</p>'
+                }
+                });
               }
-              });
           }
 
           },
@@ -156,7 +167,25 @@
       //End of Search form - GeoCoding
 
 
-
+      //start of map types
+      map.addMapType("osm", {
+        getTileUrl: function(coord, zoom) {
+          return "http://tile.openstreetmap.org/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
+        },
+        tileSize: new google.maps.Size(256, 256),
+        name: "OpenStreetMap",
+        maxZoom: 18
+      });
+      map.addMapType("cloudmade", {
+        getTileUrl: function(coord, zoom) {
+          return "http://b.tile.cloudmade.com/8ee2a50541944fb9bcedded5165f09d9/1/256/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
+        },
+        tileSize: new google.maps.Size(256, 256),
+        name: "CloudMade",
+        maxZoom: 18
+      });
+   //  map.setMapTypeId("terrain");
+      //end of map types
 
     });
   </script>
