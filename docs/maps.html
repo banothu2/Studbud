@@ -29,6 +29,7 @@
       <script type="text/javascript" src="../js/parse/jquery-1.8.3.min.js"></script>
       <script type="text/javascript" src="../js/parse/parse-1.1.15.js"></script>
       <script type="text/javascript" src="../js/parse/navigationBar.js"></script>
+      <script type="text/javascript" src="../js/parse/submitStudyData.js"></script>
 
 
 <!-- Start of maps javascript -->
@@ -51,7 +52,7 @@
         }
       });
 
-      var lat_span = 40.095988012939503 - 40.110677786181573;
+/*      var lat_span = 40.095988012939503 - 40.110677786181573;
       var lng_span = -88.21528673535154 - -88.24137926464841;
 
       for(var i = 0; i < 100; i++) {
@@ -63,13 +64,50 @@
           lng: longitude,
           title: 'Marker #' + i,
           infoWindow: {
-            content: '<p>'+i+'</p>'
+            content: '<p>'+i+" latitude = "+ latitude + ", " +longitude+ '</p>'
           }
         });
-      }
+      }*/
+
+      // Parse Data 
+      Parse.initialize("78z9KHgSR3zIeFF7soCrOiHE6D99hNTJOmnJ2oay", "E8xzL8zlCs6GFfA2kEjAuBdedyZ9vS8ErBI3vT71");
+      var mapper = Parse.Object.extend("mapper");
+      var query = new Parse.Query(mapper);
+
+  query.ascending("createdAt");
+
+  query.find({
+
+    success: function(results){
+
+          for (var i = 0; i < results.length; i++) {
+            // This does not require a network access.
+            var latitudeParse = results[i].get("latitude");
+            var longitudeParse = results[i].get("longitude");
+            var notes = results[i].get("notes");
+            var subject = results[i].get("subject");
+
+              map.addMarker({
+              lat: latitudeParse,
+              lng: longitudeParse,
+              title: 'Custom' + i,
+              infoWindow: {
+                content: '<p>'+"Custom " + i+ " "+ notes + " " + subject+ " "+ '</p><p>' + latitudeParse + " " + longitudeParse + '</p>'
+              }
+              });
+          }
+
+          },
+          error: function(mapperList, error){
+            alert(error.code + " " + error.message);
+          }
 
 
+    });
+      // end of Parse data
 
+
+      //Map controller - GeoLocate
       map.addControl({
         position: 'top_right',
         content: 'Geolocate',
@@ -95,10 +133,10 @@
           }
         }
       });
+      // end of map Controller - Geolocate
 
 
-
-
+      //Search form - Geocoding
             $('#geocoding_form').submit(function(e){
               e.preventDefault();
               GMaps.geocode({
@@ -115,7 +153,7 @@
                 }
               });
             });
-
+      //End of Search form - GeoCoding
 
 
 
@@ -178,10 +216,41 @@
     <div class="container">
 
       <div class="row">
-        <div class="span4">
+        <div class="span8">
           <h2>Submit Location</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+              <div class="modal-body">
+                <form class="form-horizontal">
+                  <div class="control-group">
+                    <label class="control-label" for="latitude">Latitude</label>
+                    <div class="controls">
+                      <input type="text" id="inputLatitude" placeholder="40.11062539655843"></input>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="longitude">Longitude</label>
+                    <div class="controls">
+                      <input type="text" id="inputLongitude" placeholder="-88.23703862969295"></input>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="notes">Notes</label>
+                    <div class="controls">
+                      <input type="text" id="inputNotes" placeholder="blah blahh">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="subject">Subject</label>
+                    <div class="controls">
+                      <input type="text" id="inputSubject" placeholder="ECE 110">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <button type="submit" class="btn">Submit Order</button>
+                    </div>
+                  </div>
+                </form>
+              </div><!-- /container -->
         </div>
 
       </div>
