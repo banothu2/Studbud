@@ -103,6 +103,35 @@
       });
       // end of map Controller - Geolocate
 
+      //Use Current Location Geocoding Modified
+            $('#useCurrentAddress').click(function(e){
+              $("#mapStatic").empty();
+              e.preventDefault();
+              GMaps.geolocate({
+                success: function(position){
+                  map.setCenter(position.coords.latitude, position.coords.longitude);
+                    map.addMarker({
+                      lat: position.coords.latitude,
+                      lng: position.coords.longitude
+                    });
+                    $("#modalLatitude").empty();
+                    $("#modalLongitude").empty();
+                    $("#modalLatitude").append("<input class='input-medium search-query'  type='text' id='inputLatitude' value='"+position.coords.latitude+"' disabled>");
+                    $("#modalLongitude").append("<input class='input-medium search-query'  type='text' id='inputLongitude' value='"+ position.coords.longitude+ "' disabled>");
+                  },
+                  error: function(error){
+                    alert('Geolocation failed: ' + error.message);
+                    window.location.replace("../docs/submitLocation.html");
+
+                  },
+                  not_supported: function(){
+                    alert("Your browser does not support geolocation");
+                  }
+
+
+
+              });
+            });
 
       //Search form - Geocoding
             $('#searchAddress').click(function(e){
@@ -192,10 +221,11 @@
       <form method="post" id="geocoding_form" class="form-search">
         <fieldset>
           <legend>Submit Study Location Form</legend>
-            <label for="address">Address:</label>
+            <label for="address">Enter Study Location:</label>
             <div class="input">
               <input type="text" id="address" name="address" class="input-medium search-query"/></input>
-              <input href="#myModal" role="button" type="submit" class="btn btn-medium" data-toggle="modal" value="Enter Location" id="searchAddress"/>
+              <input href="#myModal" role="button" type="submit" class="btn btn-medium btn-primary" data-toggle="modal" value="Use Entered Location" id="searchAddress"/> 
+              <input href="#myModal" role="button" type="submit" class="btn btn-medium btn-success" data-toggle="modal" value="Use Current Location" id="useCurrentAddress"/>
             </div>
         </fieldset>
       </form>
