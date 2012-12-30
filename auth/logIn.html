@@ -71,6 +71,37 @@
   </head>
 
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+<!-- facebook initialization code -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        // init the FB JS SDK
+        Parse.FacebookUtils.init({
+          appId      : '532629850094137', // App ID from the App Dashboard
+          channelUrl : '//www.banothu.com/channel.html', // Channel File for x-domain communication
+          status     : true, // check login status
+          cookie     : true, // enable cookies to allow Parse to access the session
+          xfbml      : true  // parse XFBML
+        });
+
+        // Additional initialization code such as adding Event Listeners goes here
+
+      };
+
+      // Load the SDK's source Asynchronously
+      // Note that the debug version is being actively developed and might 
+      // contain some type checks that are overly strict. 
+      // Please report such bugs using the bugs tool.
+      (function(d, debug){
+         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement('script'); js.id = id; js.async = true;
+         js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+         ref.parentNode.insertBefore(js, ref);
+       }(document, /*debug*/ false));
+    </script>
+<!-- end facebook initialization code -->
     <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -119,9 +150,16 @@
         <h2 class="form-signin-heading">Please log in</h2>
         <input type="text" class="input-block-level" id="inputUsername" placeholder="Username">
         <input type="password" class="input-block-level" id="inputPassword" placeholder="Password">
-        <button type="margin" class="btn btn-large btn-block btn-primary" type="submit" data-loading-text="Loading...">log in</button>
+        <button type="margin" class="btn btn-block btn-large btn-primary" type="submit" data-loading-text="Loading...">log in</button>
         <div id="error"></div>
       </form>
+
+      <form class="form-signin" id="facebook">
+        <h3 class="form-signin-heading">Or use Facebook Login!</h3>
+        <button type="margin" class="btn btn-block btn-large btn-info" type="submit" data-loading-text="Loading...">Facebook Login</button>
+        <div id="error"></div>
+      </form>
+
     </div> <!-- /container -->
 
     <hr class = "soften">

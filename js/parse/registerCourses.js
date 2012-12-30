@@ -5,6 +5,8 @@ $(document).ready(
 		function(){
 			var currentUser = Parse.User.current(); //Checks to see if user is logged in
 			if(currentUser){
+
+								$("#navigationBar").append("<ul class='nav'><li class=''><a href='../docs/index.html'>Home</a></li><li class='active'><a href='../auth/registerCourses.html'>Change Courses</a></li><li class=''><a href='../docs/maps.html'>Maps</a></li><li class=''><a href='../docs/submitLocation.html'>Submit your Study Location</a></li></ul>");
 				// when logged in:
 
 				//Need to do 2 things. 
@@ -94,6 +96,8 @@ $(document).ready(
 			else {
 				// redirect to login page 
 				window.location.replace("../auth/login.html");
+				$("#navigationBar").append("<ul class='nav'><li class=''><a href='../docs/index.html'>Home</a></li><li class=''><a href='../auth/logIn.html'>Login</a></li><li class=''><a href='../auth/register.html'>Register</a></li><li class=''><a href='../auth/forgotPass.html'>Forgot Password</a></li><li class=''><a href='../docs/aboutUs.html'>About Us</a></li><li class=''><a href='../docs/contactUs.html'>Contact Us</a></li><li class=''><a href='../docs/faqs.html'>FAQs</a></li></ul>");
+
 			}
 	}
 );

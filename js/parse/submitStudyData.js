@@ -6,6 +6,16 @@ var currentUser = Parse.User.current(); //Checks to see if user is logged in
 
 		$(document).ready(//Wait for document to be ready
 			function submitOrder() {
+
+
+						if (currentUser) {
+								$("#navigationBar").append("<ul class='nav'><li class=''><a href='../docs/index.html'>Home</a></li><li class=''><a href='../auth/registerCourses.html'>Change Courses</a></li><li class=''><a href='../docs/maps.html'>Maps</a></li><li class='active'><a href='../docs/submitLocation.html'>Submit your Study Location</a></li></ul>");
+
+						} else {
+							$("#navigationBar").append("<ul class='nav'><li class='active'><a href='../docs/index.html'>Home</a></li><li class=''><a href='../auth/logIn.html'>Login</a></li><li class=''><a href='../auth/register.html'>Register</a></li><li class=''><a href='../auth/forgotPass.html'>Forgot Password</a></li><li class=''><a href='../docs/aboutUs.html'>About Us</a></li><li class=''><a href='../docs/contactUs.html'>Contact Us</a></li><li class=''><a href='../docs/faqs.html'>FAQs</a></li></ul>");
+						}
+
+
 				var User = Parse.Object.extend("User");
 				var query = new Parse.Query(User);
 

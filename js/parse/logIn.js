@@ -8,7 +8,7 @@ $(document).ready(
 			} else {
 
 						$("#logIn").submit(
-							function(){
+							function regularLogin(){
 								Parse.User.logIn($("#inputUsername").val(), $("#inputPassword").val(), { //$("#inputUsername").val(), $("#inputPassword").val()
 									success: function(user) {
 										//if login success, then redirect page to index.html
@@ -27,6 +27,28 @@ $(document).ready(
 									}
 								}	
 								);
+								return false;
+							}
+						);
+
+						$("#facebook").submit(
+							function facebookLogin(){
+								Parse.FacebookUtils.logIn(null, {
+								  success: function(user) {
+								    if (!user.existed()) {
+								      alert("User signed up and logged in through Facebook!");
+								      window.location.replace("../auth/facebookLogin.html");
+
+								    } else {
+								      alert("User logged in through Facebook!");
+								      window.location.replace("../docs/index.html");
+
+								    }
+								  },
+								  error: function(user, error) {
+								    alert("User cancelled the Facebook login or did not fully authorize.");
+								  }
+								});
 								return false;
 							}
 						);
