@@ -6,7 +6,7 @@ $(document).ready(
 			var currentUser = Parse.User.current(); //Checks to see if user is logged in
 			if(currentUser){
 
-								$("#navigationBar").append("<ul class='nav'><li class=''><a href='../docs/index.html'>Home</a></li><li class='active'><a href='../auth/registerCourses.html'>Change Courses</a></li><li class=''><a href='../docs/maps.html'>Maps</a></li><li class=''><a href='../docs/submitLocation.html'>Submit your Study Location</a></li></ul>");
+								//$("#navigationBar").append("<ul class='nav'><li class=''><a href='../docs/index.html'>Home</a></li><li class='active'><a href='../auth/registerCourses.html'>Change Courses</a></li><li class=''><a href='../docs/maps.html'>Maps</a></li><li class=''><a href='../docs/submitLocation.html'>Submit your Study Location</a></li></ul>");
 				// when logged in:
 
 				//Need to do 2 things. 
@@ -14,6 +14,7 @@ $(document).ready(
 					// 2. open fields to be eddited
 						var User = Parse.Object.extend("User");
 						var query = new Parse.Query(User);
+
 
 						query.find({
 							success: function(){
@@ -28,8 +29,9 @@ $(document).ready(
 								    // error is a Parse.Error with an error code and description.
 								  }
 								});
-								var firstName = Parse.User.current().get("firstName");
-								var lastName = Parse.User.current().get("lastName");
+								var firstName = Parse.User.current().get("firstName") || "";
+								var lastName = Parse.User.current().get("lastName") || "";
+								var email = Parse.User.current().get("email") || "";
 								var courseOne = Parse.User.current().get("courseOne") || "";
 								var courseTwo = Parse.User.current().get("courseTwo") || "";
 								var courseThree = Parse.User.current().get("courseThree") || "";
@@ -37,8 +39,10 @@ $(document).ready(
 								var courseFive = Parse.User.current().get("courseFive") || "";
 								var courseSix = Parse.User.current().get("courseSix") || "";
 								var courseSeven = Parse.User.current().get("courseSeven") || "";
-
-								$("#welcome").append("Welcome "+ firstName + " " + lastName); // Add lines for saying "Welcome firstName lastName"
+								
+								$("#firstNameDiv").append("<label class='control-label' for='firstName'>First Name</label><div class='controls'><input type='text' id='firstName' placeholder='Ben' value= '"+firstName+"' required></div>"); // code to append for the input form with the course fields
+								$("#lastNameDiv").append("<label class='control-label' for='lastName'>Last Name</label><div class='controls'><input type='text' id='lastName' placeholder='Johnson' value= '"+lastName+"' required></div>"); // code to append for the input form with the course fields
+								$("#emailDiv").append("<label class='control-label' for='email'>Email</label><div class='controls'><input type='text' id='email' placeholder='bjohnson2@illinois.edu' value= '"+email+"' required></div>"); // code to append for the input form with the course fields
 								$("#courseOneDiv").append("<label class='control-label' for='courseOne'>Course One</label><div class='controls'><input type='text' id='courseOne' placeholder='Math 231' value= '"+courseOne+"' required></div>"); // code to append for the input form with the course fields
 								$("#courseTwoDiv").append("<label class='control-label' for='courseTwo'>Course Two</label><div class='controls'><input type='text' id='courseTwo' placeholder='Chem 102' value= '"+courseTwo+"' required></div>"); // code to append for the input form with the course fields
 								$("#courseThreeDiv").append("<label class='control-label' for='courseThree'>Course Three</label><div class='controls'><input type='text' id='courseThree' placeholder='CS 101' value= '"+courseThree+"' required></div>"); // code to append for the input form with the course fields
@@ -54,6 +58,9 @@ $(document).ready(
 									user.id = Parse.User.current().id;
 
 									//$("#NAME OF FORM ID WITH USERNAME").val();
+										user.set("firstName", $("#firstName").val());
+										user.set("lastName", $("#lastName").val());
+										user.set("email", $("#email").val());
 										user.set("courseOne", $("#courseOne").val());
 										user.set("courseTwo", $("#courseTwo").val());
 										user.set("courseThree", $("#courseThree").val());
@@ -67,7 +74,7 @@ $(document).ready(
 												//send over to the main page
 												$("#errorOrSuccess").empty();
 												$("#errorOrSuccess").append("<div class='alert alert-success'> Your courses have been updated!</div>");
-												$("#buttonAdd").append("<buttonNext type='margin' class='btn btn-large btn-block' type='submit' onClick='location.href='../docs/index.html''>Next</buttonNext>")
+												$("#buttonAdd").append("<buttonNext type='margin'  class='btn btn-large btn-block' type='submit' onClick='location.href="+ "\"" + "../docs/index.html" +"\""+ "' >Next</buttonNext>");
 												Parse.User.current().fetch({
 												  success: function(myObject) {
 												    // The object was refreshed successfully.
@@ -92,11 +99,12 @@ $(document).ready(
 
 							}
 						});
+
 			}	
 			else {
 				// redirect to login page 
 				window.location.replace("../auth/login.html");
-				$("#navigationBar").append("<ul class='nav'><li class=''><a href='../docs/index.html'>Home</a></li><li class=''><a href='../auth/logIn.html'>Login</a></li><li class=''><a href='../auth/register.html'>Register</a></li><li class=''><a href='../auth/forgotPass.html'>Forgot Password</a></li><li class=''><a href='../docs/aboutUs.html'>About Us</a></li><li class=''><a href='../docs/contactUs.html'>Contact Us</a></li><li class=''><a href='../docs/faqs.html'>FAQs</a></li></ul>");
+				//$("#navigationBar").append("<ul class='nav'><li class=''><a href='../docs/index.html'>Home</a></li><li class=''><a href='../auth/logIn.html'>Login</a></li><li class=''><a href='../auth/register.html'>Register</a></li><li class=''><a href='../auth/forgotPass.html'>Forgot Password</a></li><li class=''><a href='../docs/aboutUs.html'>About Us</a></li><li class=''><a href='../docs/contactUs.html'>Contact Us</a></li><li class=''><a href='../docs/faqs.html'>FAQs</a></li></ul>");
 
 			}
 	}

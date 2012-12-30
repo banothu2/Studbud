@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Study Buddy &middot; Register Courses</title>
+    <title>Study Buddy &middot; Facebook Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -16,7 +16,7 @@
         background-color: #f5f5f5;
       }
 
-      .form-register {
+      .form-facebookLoginCss {
         max-width: 500px;
         padding: 19px 29px 29px;
         margin: 0 auto 20px;
@@ -29,19 +29,19 @@
            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
                 box-shadow: 0 1px 2px rgba(0,0,0,.05);
       }
-      .form-register .form-register-heading{
+      .form-facebookLoginCss .form-facebookLoginCss-heading{
         text-align: center;
         margin-bottom: 30px;
       }
-      .form-register input[type="text"],
-      .form-register input[type="email"],
-      .form-register input[type="password"] {
+      .form-facebookLoginCss input[type="text"],
+      .form-facebookLoginCss input[type="email"],
+      .form-facebookLoginCss input[type="password"] {
         font-size: 16px;
         height: auto;
         margin-bottom: 15px;
         padding: 4px 9px;
       }
-      .form-register button[type="margin"]{
+      .form-facebookLoginCss button[type="margin"]{
         margin-bottom: 15px;
       }
 
@@ -63,7 +63,7 @@
       <!-- jquery, parse, and login javascript files -->
       <script type="text/javascript" src="../js/parse/jquery-1.8.3.min.js"></script>
       <script type="text/javascript" src="../js/parse/parse-1.1.15.js"></script>
-      <script type="text/javascript" src="../js/parse/registerCourses.js"></script>
+      <script type="text/javascript" src="../js/parse/facebookLogin.js"></script>
 
 
       <link href="../docs/assets/css/docs.css" rel="stylesheet">
@@ -83,7 +83,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="./index.html">Study Buddy</a>
+          <a class="brand" href="facebookLogin.html">Study Buddy</a>
           <div class="nav-collapse collapse" id= "navigationBar">
 
           </div>
@@ -92,12 +92,15 @@
     </div>
 
     <hr class = "soften">
-    <div class="container form-register">
-        <form class="form-horizontal" id="register">
+    <div class="container form-facebookLoginCss">
+        <form class="form-horizontal" id="facebookLogin">
 
-          <h2 class="form-register-heading" ></h2>
-          <h4 class="form-register-heading">Please add your semester courses</h4>
+          <h2 class="form-facebookLoginCss-heading" ></h2>
+          <h4 class="form-facebookLoginCss-heading">Please fill in the following information</h4>
 
+          <div class="control-group" id="firstNameDiv"></div>
+          <div class="control-group" id="lastNameDiv"></div>
+          <div class="control-group" id="emailDiv"></div>
           <div class="control-group" id="courseOneDiv"></div>
           <div class="control-group" id="courseTwoDiv"></div>
           <div class="control-group" id="courseThreeDiv"></div>

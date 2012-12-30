@@ -36,17 +36,19 @@ $(document).ready(
 								Parse.FacebookUtils.logIn(null, {
 								  success: function(user) {
 								    if (!user.existed()) {
-								      alert("User signed up and logged in through Facebook!");
+								      //alert("User signed up and logged in through Facebook!");
 								      window.location.replace("../auth/facebookLogin.html");
 
 								    } else {
-								      alert("User logged in through Facebook!");
+								      //alert("User logged in through Facebook!");
 								      window.location.replace("../docs/index.html");
 
 								    }
 								  },
 								  error: function(user, error) {
-								    alert("User cancelled the Facebook login or did not fully authorize.");
+										$("#errorFacebook").empty();
+										$("#errorFacebook").append("<div class='alert alert-error'> Oh snap! The user cancelled the Facebook login or did not fully authorize! Try again!</div>");
+								    //alert("User cancelled the Facebook login or did not fully authorize.");
 								  }
 								});
 								return false;
