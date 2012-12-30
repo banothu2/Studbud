@@ -1,35 +1,37 @@
 Parse.initialize("78z9KHgSR3zIeFF7soCrOiHE6D99hNTJOmnJ2oay", "E8xzL8zlCs6GFfA2kEjAuBdedyZ9vS8ErBI3vT71");
 
 var currentUser = Parse.User.current();
-if (currentUser) {
-    // show the signup or login page
-	window.location.replace("../docs/index.html");
-} else {
-	$(document).ready(
+$(document).ready(
 		function(){
-			$("#logIn").submit(
-				function(){
-					Parse.User.logIn($("#inputUsername").val(), $("#inputPassword").val(), { //$("#inputUsername").val(), $("#inputPassword").val()
-						success: function(user) {
-							//if login success, then redirect page to index.html
-							window.location.replace("../docs/index.html");
+			if (currentUser) {
+				window.location.replace("../docs/index.html");
+			} else {
 
-						},
-						error: function(user, error) {
-							//login failed - will redirect user back to the same page but will run the append line below
-					    
-					    //document.getElementById("loginError").innerHTML="<div class='alert alert-error'> The Username and password did not match! Please try again </div>";
+						$("#logIn").submit(
+							function(){
+								Parse.User.logIn($("#inputUsername").val(), $("#inputPassword").val(), { //$("#inputUsername").val(), $("#inputPassword").val()
+									success: function(user) {
+										//if login success, then redirect page to index.html
+										window.location.replace("../docs/index.html");
 
-							//Login Failed - display error right now for debugging purposes
-							$("#error").empty();
-							$("#error").append("<div class='alert alert-error'> Oh snap! The username and password did not match! Try again!</div>");
+									},
+									error: function(user, error) {
+										//login failed - will redirect user back to the same page but will run the append line below
+								    
+								    //document.getElementById("loginError").innerHTML="<div class='alert alert-error'> The Username and password did not match! Please try again </div>";
 
-						}
-					}	
-					);
-					return false;
-				}
-			);
+										//Login Failed - display error right now for debugging purposes
+										$("#error").empty();
+										$("#error").append("<div class='alert alert-error'> Oh snap! The username and password did not match! Try again!</div>");
+
+									}
+								}	
+								);
+								return false;
+							}
+						);
+
+
+			}
 		}
 	);
-}

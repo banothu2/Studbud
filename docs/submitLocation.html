@@ -29,6 +29,7 @@
       <script type="text/javascript" src="../js/parse/jquery-1.8.3.min.js"></script>
       <script type="text/javascript" src="../js/parse/parse-1.1.15.js"></script>
       <script type="text/javascript" src="../js/parse/navigationBar.js"></script>
+      <script type="text/javascript" src="../js/parse/submitStudyData.js"></script>
 
 
 <!-- Start of maps javascript -->
@@ -36,7 +37,6 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <script type="text/javascript" src="../gmaps/gmaps.js"></script>
-  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="../css/maps.css" />
   <script type="text/javascript">
     var map;
@@ -74,50 +74,7 @@
         });
       }*/
 
-      // Parse Data 
-      Parse.initialize("78z9KHgSR3zIeFF7soCrOiHE6D99hNTJOmnJ2oay", "E8xzL8zlCs6GFfA2kEjAuBdedyZ9vS8ErBI3vT71");
-      var mapper = Parse.Object.extend("mapper");
-      var query = new Parse.Query(mapper);
-      var d = new Date();
-      var dateCheck = d.getMonth() + "/" +d.getDate() + "/"+ d.getFullYear();
 
-  query.find({
-
-    success: function(results){
-
-          for (var i = 0; i < results.length; i++) {
-            // This does not require a network access.
-            var latitudeParse = results[i].get("latitude");
-            var longitudeParse = results[i].get("longitude");
-            var name = results[i].get("name");
-            var longitudeParse = results[i].get("longitude");
-            var notes = results[i].get("notes");
-            var subject = results[i].get("subject");
-            var date = results[i].get("date");
-            var contact = results[i].get("contact");
-
-                var d = new Date();
-                var dateCheck = d.getFullYear()+ ""+d.getMonth() +""+(d.getDate()-2);
-              if(date > dateCheck){
-                map.addMarker({
-                lat: latitudeParse,
-                lng: longitudeParse,
-                title: 'Custom' + i,
-                infoWindow: {
-                  content: '<p> Name: '+ name +'</p>' + '<p> subject: '+ subject+ '</p>' + '<p> Notes: '+ notes + '</p>' + '<p> Contact Info: ' + contact +'</p>'
-                }
-                });
-              }
-          }
-
-          },
-          error: function(mapperList, error){
-            alert(error.code + " " + error.message);
-          }
-
-
-    });
-      // end of Parse data
 
 
       //Map controller - GeoLocate
@@ -150,7 +107,8 @@
 
 
       //Search form - Geocoding
-            $('#geocoding_form').submit(function(e){
+            $('#searchAddress').click(function(e){
+              $("#mapStatic").empty();
               e.preventDefault();
               GMaps.geocode({
                 address: $('#address').val().trim(),
@@ -162,6 +120,10 @@
                       lat: latlng.lat(),
                       lng: latlng.lng()
                     });
+                    $("#modalLatitude").empty();
+                    $("#modalLongitude").empty();
+                    $("#modalLatitude").append("<input class='input-medium search-query'  type='text' id='inputLatitude' value='"+latlng.lat()+"' disabled>");
+                    $("#modalLongitude").append("<input class='input-medium search-query'  type='text' id='inputLongitude' value='"+ latlng.lng()+ "' disabled>");
                   //alert(latlng.lat() + " " + latlng.lng());
                   }
                 }
@@ -191,7 +153,14 @@
       //end of map types
 
     });
+
+
   </script>
+
+
+
+
+
   <style type="text/css">
     #map img {
         max-width: none;
@@ -223,18 +192,92 @@
     </div>
 
       <!-- Map div tag -->
-<hr>
-<hr>
 
    <div class="container">
-      <form method="post" id="geocoding_form">
-        <label for="address">Address:</label>
-        <div class="input">
-          <input type="text" id="address" name="address" />
-          <input type="submit" class="btn-primary btn-large" value="Search" />
-        </div>
+      <form method="post" id="geocoding_form" class="form-search">
+        <fieldset>
+          <legend>Submit Study Location Form</legend>
+            <label for="address">Address:</label>
+            <div class="input">
+              <input type="text" id="address" name="address" class="input-medium search-query"/></input>
+              <input href="#myModal" role="button" type="submit" class="btn btn-medium" data-toggle="modal" value="Enter Location" id="searchAddress"/>
+            </div>
+        </fieldset>
       </form>
-    </div>
+      <div class="alert alert-info"><p> You can click on the below map to find the address of any location! </p> </div>
+ 
+<!-- Modal -->
+      <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 id="myModalLabel">Submit Location Form</h3>
+        </div>
+
+
+        <div class="modal-body">
+          <div class="container span5">
+              <form class="form-search form-horizontal" id="register">
+                <div class="control-group">
+                  <label class="control-label" for="inputLatitude">Latitude</label>
+                  <div class="controls" id="modalLatitude">
+                    <input class='input-medium search-query'  type='text' id='inputLatitude' placeholder='Error: No Location' disabled>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label" for="inputLongitude">Longitude</label>
+                  <div class="controls" id="modalLongitude">
+                    <input class='input-medium search-query'  type='text' id='inputLongitude' placeholder='Error: No Location' disabled>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <div class="controls" >
+                    <button type="button" id="viewOnMap" class="btn btn-medium btn-primary">View On Map</button>
+                  </div>
+                </div>
+
+                    <div id="mapStatic" style="padding: 0px 0px 20px 0px"></div>
+
+                <div class="control-group">
+                  <label class="control-label" for="inputName">Name</label>
+                  <div class="controls" id="inputNameParse">
+                    <input class='input-medium search-query' id='inputName' type='text' placeholder='Ben Johnson' ></input>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">Subject</label>
+                  <div class="controls" id="inputSubject">
+                    <select class="span2" id="inputSubject">
+
+                    </select>
+
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">Details of Location</label>
+                  <div class="controls">
+                    <textarea class='input-medium search-query' rows="3" type='text' id='inputNotes' placeholder='4th Floor of Grainger (Room 4113)'></textarea>
+                  </div>
+                </div>
+                
+
+                <div class="control-group">
+                  <label class="control-label" for="inputContact">Means of Contact</label>
+                  <div class="controls">
+                    <input class='input-xlarge search-query' type='text' id='inputContact' placeholder='630-710-2212 or bjohnson2@illinois.edu'>
+                  </div>
+                </div>
+
+
+                <div id="error"></div>
+              </form>        
+          </div> 
+
+        </div>
+        <div class="modal-footer">
+          <button  type="button" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+          <buttonSubmit type="button" id="submitLocationForm" class="btn btn-primary">Save changes</buttonSubmit>
+        </div>
+      </div>
 
         <div id="map">
         </div>
@@ -279,7 +322,6 @@
     <script src="assets/js/google-code-prettify/prettify.js"></script>
 
     <script src="assets/js/application.js"></script>
-
 
   </body>
 </html>

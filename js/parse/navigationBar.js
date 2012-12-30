@@ -4,7 +4,7 @@ $(document).ready(
 	function(){
 		var currentUser = Parse.User.current();
 			if (currentUser) {
-					$("#navigationBar").append("<ul class='nav'><li class='active'><a href='../docs/index.html'>Home</a></li><li class=''><a href='../auth/registerCourses.html'>Change Courses</a></li><li class=''><a href='../docs/maps.html'>Maps</a></li></ul>");
+					$("#navigationBar").append("<ul class='nav'><li class='active'><a href='../docs/index.html'>Home</a></li><li class=''><a href='../auth/registerCourses.html'>Change Courses</a></li><li class=''><a href='../docs/maps.html'>Maps</a></li><li class=''><a href='../docs/submitLocation.html'>Submit your Study Location!</a></li></ul>");
 
 							/* <ul class='nav'>
 		                        <li class='active'>
