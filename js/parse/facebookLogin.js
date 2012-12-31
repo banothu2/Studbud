@@ -29,6 +29,8 @@ $(document).ready(
 								    // error is a Parse.Error with an error code and description.
 								  }
 								});
+
+
 								var firstName = Parse.User.current().get("firstName") || "";
 								var lastName = Parse.User.current().get("lastName") || "";
 								var email = Parse.User.current().get("email") || "";
@@ -40,6 +42,8 @@ $(document).ready(
 								var courseSix = Parse.User.current().get("courseSix") || "";
 								var courseSeven = Parse.User.current().get("courseSeven") || "";
 								
+								$("#universityDiv").append("<label class='control-label' for='university'>University</label><div class='controls'><select class='span3' id='inputUniversity'><option>University of Illinois Urbana-Champaign</option><option>Case Western Reserve University</option></select></div>")
+
 								$("#firstNameDiv").append("<label class='control-label' for='firstName'>First Name</label><div class='controls'><input type='text' id='firstName' placeholder='Ben' value= '"+firstName+"' required></div>"); // code to append for the input form with the course fields
 								$("#lastNameDiv").append("<label class='control-label' for='lastName'>Last Name</label><div class='controls'><input type='text' id='lastName' placeholder='Johnson' value= '"+lastName+"' required></div>"); // code to append for the input form with the course fields
 								$("#emailDiv").append("<label class='control-label' for='email'>Email</label><div class='controls'><input type='text' id='email' placeholder='bjohnson2@illinois.edu' value= '"+email+"' required></div>"); // code to append for the input form with the course fields
@@ -56,6 +60,18 @@ $(document).ready(
 									
 									var user = new User();
 									user.id = Parse.User.current().id;
+
+									if($("#inputSubject").val() == "University of Illinois Urbana-Champaign"){
+									  user.set("university", "University of Illinois Urbana-Champaign");
+						              user.set("universityKey", "5kCPPpH5I5");
+									}
+									else if($("#inputSubject").val() == "Case Western Reserve University"){
+									  user.set("university", "Case Western Reserve University");
+						              user.set("universityKey", "ih25qG1u1N");
+									}
+									else{
+
+									}
 
 									//$("#NAME OF FORM ID WITH USERNAME").val();
 										user.set("firstName", $("#firstName").val());

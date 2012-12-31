@@ -13,7 +13,7 @@ $(document).ready(
 					$("#clickedLogOut").click(
 						function(){
 							Parse.User.logOut();
-							window.location.replace("../auth/login.html");
+							window.location.replace("../auth/logIn.html");
 
 						}
 						);

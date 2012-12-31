@@ -11,7 +11,7 @@ function () {
 				 
 				var currentUser = Parse.User.current();  // this will now be null
 
-				window.location.replace("../auth/login.html");
+				window.location.replace("../auth/logIn.html");
 
 			}
 		)

@@ -39,22 +39,24 @@
   <link rel="stylesheet" type="text/css" href="../css/maps.css" />
   <script type="text/javascript">
     var map;
-    $(document).ready(function(){
-      map = new GMaps({
-        div: '#map',
-        zoom: 15,
-        lat: 40.109165,
-        lng: -88.227352,
+    $(document).ready(
+      function(){
+        
+        map = new GMaps({
+          div: '#map',
+          zoom: 15,
+          lat: 40.109165,
+          lng: -88.227352,
 
-        markerClusterer: function(map) {
-          return new MarkerClusterer(map);
-        },
+          markerClusterer: function(map) {
+            return new MarkerClusterer(map);
+          },
 
-        mapTypeControlOptions: {
-          mapTypeIds : ["hybrid", "roadmap", "satellite", "terrain", "osm", "cloudmade"]
-        }
+          mapTypeControlOptions: {
+            mapTypeIds : ["hybrid", "roadmap", "satellite", "terrain", "osm", "cloudmade"]
+          }
 
-      });
+        });
 
 /*      var lat_span = 40.095988012939503 - 40.110677786181573;
       var lng_span = -88.21528673535154 - -88.24137926464841;
