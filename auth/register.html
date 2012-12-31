@@ -64,8 +64,62 @@
     </style>
     <script type="text/javascript" >
 
-        function register(university, universityKey){
+        function modalClick(university, universityKey){
+                    $("#inputModal").empty();
+                    $("#inputModal").append('<div class="modal-body"><form class="form-horizontal" id="register"><div class="control-group"><label class="control-label" for="university">University</label><div class="controls"><input type="text" id="university" class="input-xlarge" value="' + university +'" disabled></div></div><div class="control-group"><label class="control-label" for="username' + universityKey+ '">Username</label><div class="controls"><input type="text" id="username' + universityKey + '" placeholder="bjohnson" required></div></div><div class="control-group"><label class="control-label" for="firstName' + universityKey + '">First Name</label><div class="controls"><input type="text" id="firstName' + universityKey + '" placeholder="Benjamin"></div></div><div class="control-group"><label class="control-label" for="lastName' + universityKey + '">Last Name</label><div class="controls"><input type="text" id="lastName' + universityKey + '" placeholder="Johnson"></div></div><div class="control-group"><label class="control-label" for="password' + universityKey + '">Password</label><div class="controls"><input type="password" id="password' + universityKey + '" placeholder="@ppl3AR3d3l1c10u5" required></div></div><div class="control-group"><label class="control-label" for="email' + universityKey + '">Email</label><div class="controls"><input type="email" id="email' + universityKey + '" placeholder="bjohnson32@illinois.edu" required></div></div><div class="alert"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Remember:</strong> Your email address has to be the .edu address from your university!</div><div id="error'+ universityKey + '"></div></form></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Close</button><button class="btn btn-primary" type="submit" onClick="register(' + university + ', '+ universityKey + ')">Register</button></div>');
+        }
 
+        function register(university, universityKey){
+//modal html code
+/*  <div class="modal-body">
+        <form class="form-horizontal" id="register">
+          <div class="control-group">
+            <label class="control-label" for="university">University</label>
+            <div class="controls">
+              <input type="text" id="university" class="input-xlarge" value="' + university +'" disabled>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="username' + universityKey+ '">Username</label>
+            <div class="controls">
+              <input type="text" id="username' + universityKey + '" placeholder="bjohnson" required>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="firstName' + universityKey + '">First Name</label>
+            <div class="controls">
+              <input type="text" id="firstName' + universityKey + '" placeholder="Benjamin">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="lastName' + universityKey + '">Last Name</label>
+            <div class="controls">
+              <input type="text" id="lastName' + universityKey + '" placeholder="Johnson">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="password' + universityKey + '">Password</label>
+            <div class="controls">
+              <input type="password" id="password' + universityKey + '" placeholder="@ppl3AR3d3l1c10u5" required>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="email' + universityKey + '">Email</label>
+            <div class="controls">
+              <input type="email" id="email' + universityKey + '" placeholder="bjohnson32@illinois.edu" required>
+            </div>
+          </div>
+          <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Remember:</strong> Your email address has to be the .edu address from your university!
+          </div>
+          <div id="error'+ universityKey + '"></div>
+        </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary" type="submit" onClick="register(' + university + ', '+ universityKey + ')">Register</button>
+  </div>*/
 
             var username = "#username" + universityKey;
             var firstName = "#firstName" + universityKey;
@@ -180,7 +234,7 @@
                     <p>A world leader in research, teaching and public engagement.</p>
                     <p>Distinguished by the breadth of our programs, broad academic excellence, and internationally renowned faculty</p>
                     <!-- Button to trigger modal -->
-                    <p><a href="#UIUC" class="btn btn-success btn-block btn-large" role="button"  data-toggle="modal">Register</a> </p>
+                    <p><a href="#universityModal" class="btn btn-success btn-block btn-large" role="button"  data-toggle="modal" onClick='modalClick("University of Illinois Urbana-Champaign", "5kCPPpH5I5")' >Register</a> </p>
                   </div>
                 </div>
               </li>
@@ -190,7 +244,7 @@
                   <div class="caption">
                     <h3>Case Western (CWRU)</h3>
                     <p>Case Western Reserve, a leader among independent research universities, offers world-class academic programs in Cleveland's culturally vibrant University Circle.</p>
-                    <p><a href="#CASE" class="btn btn-primary btn-block btn-large" role="button"  data-toggle="modal">Register</a> </p>
+                    <p><a href="#universityModal" class="btn btn-primary btn-block btn-large" role="button"  data-toggle="modal" onClick='modalClick("Case Western Reserve University", "ih25qG1u1N")'>Register</a> </p>
                   </div>
                 </div>
               </li>
@@ -213,118 +267,16 @@
 
  
 <!-- Modal -->
-<div id="UIUC" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="universityModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Please Register</h3>
+    <div id="inputModal"></div>
   </div>
-  <div class="modal-body">
-        <form class="form-horizontal" id="register">
-          <div class="control-group">
-            <label class="control-label" for="university">University</label>
-            <div class="controls">
-              <input type="text" id="university" class="input-xlarge" value="University of Illinois Urbana-Champaign" disabled>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="username5kCPPpH5I5">Username</label>
-            <div class="controls">
-              <input type="text" id="username5kCPPpH5I5" placeholder="bjohnson" required>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="firstName5kCPPpH5I5">First Name</label>
-            <div class="controls">
-              <input type="text" id="firstName5kCPPpH5I5" placeholder="Benjamin">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="lastName5kCPPpH5I5">Last Name</label>
-            <div class="controls">
-              <input type="text" id="lastName5kCPPpH5I5" placeholder="Johnson">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="password5kCPPpH5I5">Password</label>
-            <div class="controls">
-              <input type="password" id="password5kCPPpH5I5" placeholder="@ppl3AR3d3l1c10u5" required>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="email5kCPPpH5I5">Email</label>
-            <div class="controls">
-              <input type="email" id="email5kCPPpH5I5" value="@illinois.edu" placeholder="bjohnson32@illinois.edu" required>
-            </div>
-          </div>
-          <div class="alert">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Remember:</strong> Your email address has to be the .edu address from your university!
-          </div>
-          <div id="error5kCPPpH5I5"></div>
-        </form>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary" type="submit" id="registerUIUC" onClick='register("University of Illinois Urbana-Champaign", "5kCPPpH5I5")'>Register</button>
-  </div>
+
 </div>
 
 
-<div id="CASE" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Please Register</h3>
-  </div>
-  <div class="modal-body">
-        <form class="form-horizontal" id="register">
-          <div class="control-group">
-            <label class="control-label" for="university">University</label>
-            <div class="controls">
-              <input type="text" id="university" class="input-xlarge" value="Case Western Reserve University" disabled>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="usernameih25qG1u1N">Username</label>
-            <div class="controls">
-              <input type="text" id="usernameih25qG1u1N" placeholder="bjohnson" required>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="firstNameih25qG1u1N">First Name</label>
-            <div class="controls">
-              <input type="text" id="firstNameih25qG1u1N" placeholder="Benjamin">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="lastNameih25qG1u1N">Last Name</label>
-            <div class="controls">
-              <input type="text" id="lastNameih25qG1u1N" placeholder="Johnson">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="passwordih25qG1u1N">Password</label>
-            <div class="controls">
-              <input type="password" id="passwordih25qG1u1N" placeholder="@ppl3AR3d3l1c10u5" required>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="emailih25qG1u1N">Email</label>
-            <div class="controls">
-              <input type="email" id="emailih25qG1u1N" value="@case.edu" placeholder="bjohnson32@illinois.edu" required>
-            </div>
-          </div>
-          <div class="alert">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong>Remember:</strong> Your email address has to be the .edu address from your university!
-          </div>
-          <div id="errorih25qG1u1N"></div>
-        </form>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary" type="submit" id="registerCASE" onClick='register("Case Western Reserve University", "ih25qG1u1N")'>Register</button>
-  </div>
-</div>
 
     <hr class = "soften">
 

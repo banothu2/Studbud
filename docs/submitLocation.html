@@ -39,11 +39,23 @@
   <script type="text/javascript">
     var map;
     $(document).ready(function(){
+
+
+        var universityKey = Parse.User.current().get("universityKey");
+        var Universities = Parse.Object.extend("Universities");
+        var query = new Parse.Query(Universities);
+
+
+        query.get(universityKey, {  
+          success: function(results){
+            var latitudeParse = results.get("latitude");
+            var longitudeParse = results.get("longitude");
+
       map = new GMaps({
         div: '#map',
         zoom: 15,
-        lat: 40.109165,
-        lng: -88.227352,
+        lat: latitudeParse,
+        lng: longitudeParse,
 
         markerClusterer: function(map) {
           return new MarkerClusterer(map);
@@ -179,7 +191,14 @@
    //  map.setMapTypeId("terrain");
       //end of map types
 
+      },
+                error: function(results, error) {
+                  // The save failed.
+                  alert("failed");
+                  // error is a Parse.Error with an error code and description.
+                }
     });
+});
 
 
   </script>

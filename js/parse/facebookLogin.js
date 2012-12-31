@@ -42,7 +42,7 @@ $(document).ready(
 								var courseSix = Parse.User.current().get("courseSix") || "";
 								var courseSeven = Parse.User.current().get("courseSeven") || "";
 								
-								$("#universityDiv").append("<label class='control-label' for='university'>University</label><div class='controls'><select class='span3' id='inputUniversity'><option>University of Illinois Urbana-Champaign</option><option>Case Western Reserve University</option></select></div>")
+								$("#universityDiv").append("<label class='control-label' for='university'>University</label><div class='controls'><select class='span4' id='inputUniversity'><option>University of Illinois Urbana-Champaign</option><option>Case Western Reserve University</option></select></div>")
 
 								$("#firstNameDiv").append("<label class='control-label' for='firstName'>First Name</label><div class='controls'><input type='text' id='firstName' placeholder='Ben' value= '"+firstName+"' required></div>"); // code to append for the input form with the course fields
 								$("#lastNameDiv").append("<label class='control-label' for='lastName'>Last Name</label><div class='controls'><input type='text' id='lastName' placeholder='Johnson' value= '"+lastName+"' required></div>"); // code to append for the input form with the course fields
@@ -61,11 +61,11 @@ $(document).ready(
 									var user = new User();
 									user.id = Parse.User.current().id;
 
-									if($("#inputSubject").val() == "University of Illinois Urbana-Champaign"){
+									if($("#inputUniversity").val() == "University of Illinois Urbana-Champaign"){
 									  user.set("university", "University of Illinois Urbana-Champaign");
 						              user.set("universityKey", "5kCPPpH5I5");
 									}
-									else if($("#inputSubject").val() == "Case Western Reserve University"){
+									else if($("#inputUniversity").val() == "Case Western Reserve University"){
 									  user.set("university", "Case Western Reserve University");
 						              user.set("universityKey", "ih25qG1u1N");
 									}
@@ -90,6 +90,7 @@ $(document).ready(
 												//send over to the main page
 												$("#errorOrSuccess").empty();
 												$("#errorOrSuccess").append("<div class='alert alert-success'> Your courses have been updated!</div>");
+												$("#buttonAdd").empty();
 												$("#buttonAdd").append("<buttonNext type='margin'  class='btn btn-large btn-block' type='submit' onClick='location.href="+ "\"" + "../docs/index.html" +"\""+ "' >Next</buttonNext>");
 												Parse.User.current().fetch({
 												  success: function(myObject) {
