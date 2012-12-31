@@ -29,6 +29,22 @@
            -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
                 box-shadow: 0 1px 2px rgba(0,0,0,.05);
       }
+      .buffer{
+        padding: 10px;
+      }
+      .options-universities {
+        max-width: 930px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 10px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
       .form-register .form-register-heading{
         text-align: center;
         margin-bottom: 30px;
@@ -46,6 +62,45 @@
       }
 
     </style>
+    <script type="text/javascript" >
+
+        function register(university, universityKey){
+
+
+            var username = "#username" + universityKey;
+            var firstName = "#firstName" + universityKey;
+            var lastName = "#lastName" + universityKey;
+            var password = "#password" + universityKey;
+            var email = "#email" + universityKey;
+
+              var user = new Parse.User();
+            //$("#NAME OF FORM ID WITH USERNAME").val();
+              user.set("university", university);
+              user.set("universityKey", universityKey);
+              user.set("username", $(username).val());
+              user.set("firstName", $(firstName).val());
+              user.set("lastName", $(lastName).val());
+              user.set("password", $(password).val());
+              user.set("email", $(email).val());
+
+              user.signUp(null, {
+                success: function(user){
+                  //Sign up set worked
+                  window.location.replace("registerCourses.html");
+
+                },
+                error: function(user, error){
+                  //Ran into an error 
+                  //Say what the error is -- add something later
+                  // for debugging purposes - state what error is:
+                  var errorTag =  "#error" + universityKey; 
+                  $(errorTag).empty();
+                  $(errorTag).append("<div class='alert alert-error'> Oh snap! Change a few things up and try submitting again.</div>");
+                }
+              });
+              return false;
+          }
+    </script> 
     <link href="../docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -112,45 +167,164 @@
       </div>
     </div>
 
-    <hr class = "soften">
+        <div class="buffer"></div>
 
-    <div class="container form-register">
+        <div class="container options-universities">
+          <div class="row-fluid">
+            <ul class="thumbnails">
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src="../img/thumbnails/UIUCthumb.jpg" alt="University of Illinois Urbana-Champaign">
+                  <div class="caption">
+                    <h3>University Of Illinois</h3>
+                    <p>A world leader in research, teaching and public engagement.</p>
+                    <p>Distinguished by the breadth of our programs, broad academic excellence, and internationally renowned faculty</p>
+                    <!-- Button to trigger modal -->
+                    <p><a href="#UIUC" class="btn btn-success btn-block btn-large" role="button"  data-toggle="modal">Register</a> </p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src="../img/thumbnails/CASEthumb.jpg" alt="">
+                  <div class="caption">
+                    <h3>Case Western (CWRU)</h3>
+                    <p>Case Western Reserve, a leader among independent research universities, offers world-class academic programs in Cleveland's culturally vibrant University Circle.</p>
+                    <p><a href="#CASE" class="btn btn-primary btn-block btn-large" role="button"  data-toggle="modal">Register</a> </p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <img src="../img/thumbnails/UCHICAGOthumb.jpg" alt="">
+                  <div class="caption">
+                    <h3>University of Chicago</h3>
+                    <p>Coming soon!</p>
+                    <p> </p>
+                    <p> </p>
+                    <p> </p>
+                    <p><a href="#" class="btn btn-info btn-block btn-large" disabled>Register</a> </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+ 
+<!-- Modal -->
+<div id="UIUC" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Please Register</h3>
+  </div>
+  <div class="modal-body">
         <form class="form-horizontal" id="register">
-          <h2 class="form-register-heading">Please Register</h2>
           <div class="control-group">
-            <label class="control-label" for="username">Username</label>
+            <label class="control-label" for="university">University</label>
             <div class="controls">
-              <input type="text" id="username" placeholder="bjohnson" required>
+              <input type="text" id="university" class="input-xlarge" value="University of Illinois Urbana-Champaign" disabled>
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="firstName">First Name</label>
+            <label class="control-label" for="username5kCPPpH5I5">Username</label>
             <div class="controls">
-              <input type="text" id="firstName" placeholder="Benjamin">
-            </div>
-            <label class="control-label" for="lastName">Last Name</label>
-            <div class="controls">
-              <input type="text" id="lastName" placeholder="Johnson">
+              <input type="text" id="username5kCPPpH5I5" placeholder="bjohnson" required>
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="password">Password</label>
+            <label class="control-label" for="firstName5kCPPpH5I5">First Name</label>
             <div class="controls">
-              <input type="password" id="password" placeholder="@ppl3AR3d3l1c10u5" required>
+              <input type="text" id="firstName5kCPPpH5I5" placeholder="Benjamin">
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="email">Email</label>
+            <label class="control-label" for="lastName5kCPPpH5I5">Last Name</label>
             <div class="controls">
-              <input type="email" id="email" placeholder="bjohnson32@illinois.edu" required>
+              <input type="text" id="lastName5kCPPpH5I5" placeholder="Johnson">
             </div>
           </div>
-          <button type="margin" class="btn btn-large btn-block btn-primary" type="submit">Register</button>
-
-          <div id="error"></div>
+          <div class="control-group">
+            <label class="control-label" for="password5kCPPpH5I5">Password</label>
+            <div class="controls">
+              <input type="password" id="password5kCPPpH5I5" placeholder="@ppl3AR3d3l1c10u5" required>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="email5kCPPpH5I5">Email</label>
+            <div class="controls">
+              <input type="email" id="email5kCPPpH5I5" value="@illinois.edu" placeholder="bjohnson32@illinois.edu" required>
+            </div>
+          </div>
+          <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Remember:</strong> Your email address has to be the .edu address from your university!
+          </div>
+          <div id="error5kCPPpH5I5"></div>
         </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary" type="submit" id="registerUIUC" onClick='register("University of Illinois Urbana-Champaign", "5kCPPpH5I5")'>Register</button>
+  </div>
+</div>
 
-    </div> <!-- /container -->
+
+<div id="CASE" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Please Register</h3>
+  </div>
+  <div class="modal-body">
+        <form class="form-horizontal" id="register">
+          <div class="control-group">
+            <label class="control-label" for="university">University</label>
+            <div class="controls">
+              <input type="text" id="university" class="input-xlarge" value="Case Western Reserve University" disabled>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="usernameih25qG1u1N">Username</label>
+            <div class="controls">
+              <input type="text" id="usernameih25qG1u1N" placeholder="bjohnson" required>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="firstNameih25qG1u1N">First Name</label>
+            <div class="controls">
+              <input type="text" id="firstNameih25qG1u1N" placeholder="Benjamin">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="lastNameih25qG1u1N">Last Name</label>
+            <div class="controls">
+              <input type="text" id="lastNameih25qG1u1N" placeholder="Johnson">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="passwordih25qG1u1N">Password</label>
+            <div class="controls">
+              <input type="password" id="passwordih25qG1u1N" placeholder="@ppl3AR3d3l1c10u5" required>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="emailih25qG1u1N">Email</label>
+            <div class="controls">
+              <input type="email" id="emailih25qG1u1N" value="@case.edu" placeholder="bjohnson32@illinois.edu" required>
+            </div>
+          </div>
+          <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Remember:</strong> Your email address has to be the .edu address from your university!
+          </div>
+          <div id="errorih25qG1u1N"></div>
+        </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary" type="submit" id="registerCASE" onClick='register("Case Western Reserve University", "ih25qG1u1N")'>Register</button>
+  </div>
+</div>
 
     <hr class = "soften">
 

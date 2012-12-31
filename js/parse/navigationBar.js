@@ -4,8 +4,19 @@ $(document).ready(
 	function(){
 		var currentUser = Parse.User.current();
 			if (currentUser) {
-					$("#navigationBar").append("<ul class='nav'><li class='active'><a href='../docs/index.html'>Home</a></li><li class=''><a href='../auth/registerCourses.html'>Change Courses</a></li><li class=''><a href='../docs/maps.html'>Maps</a></li><li class=''><a href='../docs/submitLocation.html'>Submit your Study Location!</a></li></ul>");
 
+					var User = Parse.Object.extend("User");
+
+					var firstName = Parse.User.current().get("firstName");
+					$("#navigationBar").append("<ul class='nav'><li class='active'><a href='../docs/index.html'>Home</a></li><li class=''><a href='../auth/registerCourses.html'>Change Courses</a></li><li class=''><a href='../docs/maps.html'>Maps</a></li><li class=''><a href='../docs/submitLocation.html'>Submit your Study Location</a></li><li class=''><a class='' href='./index.html'>Welcome " + firstName + "!</a></li><li class=''><a class='' id='clickedLogOut'>Log Out</a></li></ul>");
+					
+					$("#clickedLogOut").click(
+						function(){
+							Parse.User.logOut();
+							window.location.replace("../auth/login.html");
+
+						}
+						);
 							/* <ul class='nav'>
 		                        <li class='active'>
 		                          <a href='index.html'>Home</a>
