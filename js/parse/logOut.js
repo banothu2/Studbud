@@ -14,6 +14,6 @@ function () {
 				window.location.replace("../auth/logIn.html");
 
 			}
-		)
+		);
 }
 	);

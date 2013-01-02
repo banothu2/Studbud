@@ -7,14 +7,19 @@ var currentUser = Parse.User.current(); //Checks to see if user is logged in
 		$(document).ready(//Wait for document to be ready
 			function submitOrder() {
 
+					var User = Parse.Object.extend("User");
 
-						if (currentUser) {
-							$("#navigationBar").append("<ul class='nav'><li class=''><a href='../docs/index.html'>Home</a></li><li class=''><a href='../auth/registerCourses.html'>Change Courses</a></li><li class=''><a href='../docs/maps.html'>Maps</a></li><li class='active'><a href='../docs/submitLocation.html'>Submit your Study Location</a></li></ul>");
+					var firstName = Parse.User.current().get("firstName");
+					var lastName = Parse.User.current().get("lastName");
+					$("#navigationBar").append("<ul class='nav'><li class=''><a href='../docs/index.html'>Home</a></li><li class=''><a href='../docs/maps.html'>Maps</a></li><li class=''><a href='../docs/students.html'>Students Alike</a></li><li class='active'><a href='../docs/submitLocation.html'>Submit your Study Location</a></li><li class=''><a href='../docs/tutorView.html'>View Tutors</a></li><li class=''><a href='../docs/tutorMap.html'>Tutors Map</a></li><li class=''><a href='../docs/tutorSubmit.html'>Submit your Tutor Location</a></li><li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'>" + firstName +" " + lastName + "<b class='caret'></b></a><ul class='dropdown-menu'><li><a href='../auth/courses.html'>Change Courses</a></li><li><a href='../auth/settings.html'>Settings</a></li><li><a id='clickedLogOut'>Log Out</a></li><li class='divider'></li><li class='nav-header'>Tutors</li><li><a href='../auth/tutorProfile.html'>Tutor Profile</a></li><li><a href='../docs/feedback.html'>Submit Feedback</a></li></ul></li></ul>");
 
-						} else {
-							$("#navigationBar").append("<ul class='nav'><li class='active'><a href='../docs/index.html'>Home</a></li><li class=''><a href='../auth/logIn.html'>Login</a></li><li class=''><a href='../auth/register.html'>Register</a></li><li class=''><a href='../auth/forgotPass.html'>Forgot Password</a></li><li class=''><a href='../docs/aboutUs.html'>About Us</a></li><li class=''><a href='../docs/contactUs.html'>Contact Us</a></li><li class=''><a href='../docs/faqs.html'>FAQs</a></li></ul>");
+					$("#clickedLogOut").click(
+						function logOut(){
+							Parse.User.logOut();
+							window.location.replace("../auth/logIn.html");
+
 						}
-
+						);
 
 				var User = Parse.Object.extend("User");
 				var query = new Parse.Query(User);
@@ -66,7 +71,7 @@ var currentUser = Parse.User.current(); //Checks to see if user is logged in
 							 			                
 
 							var d = new Date();
-                			var dateCheck = d.getFullYear()+ ""+d.getMonth() +""+d.getDate();
+                			var dateCheck = d.getTime();
                 			if($("#inputLatitude").val()== "" || $("#inputLongitude").val() == ""){
                 				$("#error").empty();
 							   	$("#error").append("<div class='alert alert-error'>Oh oh! The location is missing!</div>")
@@ -80,6 +85,8 @@ var currentUser = Parse.User.current(); //Checks to see if user is logged in
 							  longitude: $("#inputLongitude").val(),
 							  name: $("#inputName").val(),
 							  subject: $("#inputSubject option:selected").val(),
+							  startTime: $("#inputStart").val(),
+							  endTime: $("#inputEnd").val(),
 							  notes: $("#inputNotes").val(),
 							  contact: $("#inputContact").val(),
 							  date: dateCheck
@@ -101,6 +108,7 @@ var currentUser = Parse.User.current(); //Checks to see if user is logged in
 
 						}	
 					)
+
 			}
 		);
 	}	

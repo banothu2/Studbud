@@ -28,7 +28,7 @@ $(document).ready(
 							user.signUp(null, {
 								success: function(user){
 									//Sign up set worked
-									window.location.replace("registerCourses.html");
+									window.location.replace("courses.html");
 
 								},
 								error: function(user, error){

@@ -12,13 +12,13 @@
     <style type="text/css">
       body {
         padding-top: 40px;
-        padding-bottom: 40px;
       }
 
       .form-register {
         max-width: 600px;
         padding: 19px 29px 29px;
         margin: 0 auto 20px;
+        margin-top: 30px;
         background-color: #fff;
         border: 1px solid #e5e5e5;
         -webkit-border-radius: 5px;
@@ -62,8 +62,7 @@
       <!-- jquery, parse, and login javascript files -->
       <script type="text/javascript" src="../js/parse/jquery-1.8.3.min.js"></script>
       <script type="text/javascript" src="../js/parse/parse-1.1.15.js"></script>
-      <script type="text/javascript" src="../js/parse/registerCourses.js"></script>
-
+      <script type="text/javascript" src="../js/parse/courses.js"></script>
 
       <link href="../docs/assets/css/docs.css" rel="stylesheet">
       <link href="../docs/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
@@ -74,7 +73,7 @@
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
     <!-- Navbar
     ================================================== -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -90,13 +89,16 @@
       </div>
     </div>
 
-    <hr class = "soften">
-    <div class="container form-register" id="coursesPage">
+    <div class="container form-register" id="coursesPage"> <!-- javascript will populate this table on load if user is logged in --> 
 
         
     </div> <!-- /container -->
 
-    <hr class = "soften">
+    <footer class="footer">      
+      <div class="container">
+        <p>Copyright © 2013 Study Buddy | All rights reserved.</p>
+      </div>
+    </footer>
 
     <!-- Le javascript
     ================================================== -->

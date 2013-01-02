@@ -31,9 +31,10 @@
       <script type="text/javascript" src="../js/parse/maps.js"></script>
 
 
+
+
 <!-- Start of maps javascript -->
   <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerclusterer/1.0/src/markerclusterer.js"></script>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
   <script type="text/javascript" src="../gmaps/gmaps.js"></script>
   <link rel="stylesheet" type="text/css" href="../css/maps.css" />
@@ -42,7 +43,6 @@
     $(document).ready(
       function(){
         
-
         var universityKey = Parse.User.current().get("universityKey");
         var Universities = Parse.Object.extend("Universities");
         var query = new Parse.Query(Universities);
@@ -91,7 +91,7 @@
       var mapper = Parse.Object.extend("mapper");
       var query = new Parse.Query(mapper);
       var d = new Date();
-      var dateCheck = d.getMonth() + "/" +d.getDate() + "/"+ d.getFullYear();
+      var dateCheck = d.getTime() - 172800000;
 
   query.equalTo("universityKey", Parse.User.current().get("universityKey"));
 
@@ -109,10 +109,6 @@
             var subject = results[i].get("subject");
             var date = results[i].get("date");
             var contact = results[i].get("contact");
-
-                var d = new Date();
-                var dateCheck = d.getFullYear()+ ""+d.getMonth() +""+(d.getDate()-2);
-
 
 
 
@@ -222,6 +218,37 @@
     #map img {
         max-width: none;
     }
+
+  .form-mapData {
+    max-width: 760px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    margin-top: 30px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+       -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+            box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  }
+  .form-mapData .form-mapData-heading{
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .form-mapData input[type="text"],
+  .form-mapData input[type="email"],
+  .form-mapData input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 4px 9px;
+  }
+  .form-mapData button[type="margin"]{
+    margin-bottom: 15px;
+  }
+
   </style>
 <!-- End of Maps Javascript -->
 
@@ -260,27 +287,28 @@
               </div>
         </fieldset>
       </form>
-        <div id="map">
-        </div>
+      <div id="map">
+      </div>
+  </div>
+<hr>
+  <div class="container">
+    <input id="presentStudyData" class="btn btn-block btn-success btn-large" value="View all study postings"/>
+    <hr>
+    <table class="table table-hover" id="studyDataTable">
 
-    </div>
+    </table>
+  </div>
 
-
-
-      <!-- Search form  -->
 
 
 
     <!-- Footer
     ================================================== -->
-    <footer class="footer">
+    <footer class="footer">      
       <div class="container">
-        <p>Study Buddy</p>
+        <p>Copyright © 2013 Study Buddy | All rights reserved.</p>
       </div>
     </footer>
-
-
-
 
 
     <!-- Le javascript
