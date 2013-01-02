@@ -1,17 +1,32 @@
 Parse.initialize("78z9KHgSR3zIeFF7soCrOiHE6D99hNTJOmnJ2oay", "E8xzL8zlCs6GFfA2kEjAuBdedyZ9vS8ErBI3vT71");
 
+
 $(document).ready(
-	function(){
-		var currentUser = Parse.User.current();
-			if (currentUser) {
+		function(){
+			var currentUser = Parse.User.current(); //Checks to see if user is logged in
+			if(currentUser){
 
 					var User = Parse.Object.extend("User");
 
 					var firstName = Parse.User.current().get("firstName");
-					$("#navigationBar").append("<ul class='nav'><li class='active'><a href='../docs/index.html'>Home</a></li><li class=''><a href='../auth/registerCourses.html'>Change Courses</a></li><li class=''><a href='../docs/maps.html'>Maps</a></li><li class=''><a href='../docs/submitLocation.html'>Submit your Study Location</a></li><li class=''><a class='' href='./index.html'>Welcome " + firstName + "!</a></li><li class=''><a class='' id='clickedLogOut'>Log Out</a></li></ul>");
+					var lastName = Parse.User.current().get("lastName");
+					$("#navigationBar").append("<ul class='nav'><li class='active'><a href='../docs/index.html'>Home</a></li><li class=''><a href='../docs/maps.html'>Maps</a></li><li class=''><a href='../docs/submitLocation.html'>Submit your Study Location</a></li><li class='dropdown'><a href='#' class='dropdown-toggle' data-toggle='dropdown'>" + firstName +" " + lastName + "<b class='caret'></b></a><ul class='dropdown-menu'><li><a href='../auth/courses.html'>Change Courses</a></li><li><a href='../auth/settings.html'>Settings</a></li><li><a id='clickedLogOut'>Log Out</a></li><li class='divider'></li><li class='nav-header'>Nav header</li><li><a href='#'>Separated link</a></li><li><a href='#'>One more separated link</a></li></ul></li></ul>");
 					
+/*					<li class='dropdown'>
+                        <a href='#' class='dropdown-toggle' data-toggle='dropdown'>" + firstName +" " + lastName "<b class='caret'></b></a>
+                        <ul class='dropdown-menu'>
+                          <li><a href='../auth/settings.html'>Settings</a></li>
+                          <li><a id='clickedLogOut'>Log Out</a></li>
+                          <li><a href='#'>Something else here</a></li>
+                          <li class='divider'></li>
+                          <li class='nav-header'>Nav header</li>
+                          <li><a href='#'>Separated link</a></li>
+                          <li><a href='#'>One more separated link</a></li>
+                        </ul>
+                      </li>*/
+
 					$("#clickedLogOut").click(
-						function(){
+						function logOut(){
 							Parse.User.logOut();
 							window.location.replace("../auth/logIn.html");
 

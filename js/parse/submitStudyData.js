@@ -35,7 +35,7 @@ var currentUser = Parse.User.current(); //Checks to see if user is logged in
 						var courseSeven = Parse.User.current().get("courseSeven") || "Independent Study";
 
 						$("#inputSubject").empty();
-						$("#inputSubject").append("<select class='span2' id='inputSubject'><option>"+courseOne + "</option><option>" + courseTwo+ "</option><option>" + courseThree+ "</option><option>" + courseFour + "</option><option>" + courseFive + "</option><option>" + courseSix + "</option><option>" + courseSeven+ "</option></select>");
+						$("#inputSubject").append("<select class='span3' id='inputSubject'><option>"+courseOne + "</option><option>" + courseTwo+ "</option><option>" + courseThree+ "</option><option>" + courseFour + "</option><option>" + courseFive + "</option><option>" + courseSix + "</option><option>" + courseSeven+ "</option></select>");
 
 					}
 				})
@@ -67,7 +67,6 @@ var currentUser = Parse.User.current(); //Checks to see if user is logged in
 
 							var d = new Date();
                 			var dateCheck = d.getFullYear()+ ""+d.getMonth() +""+d.getDate();
-                			alert("!"+$("#inputLatitude").val()+"!")
                 			if($("#inputLatitude").val()== "" || $("#inputLongitude").val() == ""){
                 				$("#error").empty();
 							   	$("#error").append("<div class='alert alert-error'>Oh oh! The location is missing!</div>")
@@ -80,7 +79,7 @@ var currentUser = Parse.User.current(); //Checks to see if user is logged in
 							  latitude: $("#inputLatitude").val(),
 							  longitude: $("#inputLongitude").val(),
 							  name: $("#inputName").val(),
-							  subject: $("#inputSubject").val(),
+							  subject: $("#inputSubject option:selected").val(),
 							  notes: $("#inputNotes").val(),
 							  contact: $("#inputContact").val(),
 							  date: dateCheck

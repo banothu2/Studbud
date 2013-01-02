@@ -94,6 +94,7 @@
       var dateCheck = d.getMonth() + "/" +d.getDate() + "/"+ d.getFullYear();
 
   query.equalTo("universityKey", Parse.User.current().get("universityKey"));
+
   query.find({
 
     success: function(results){
@@ -111,7 +112,11 @@
 
                 var d = new Date();
                 var dateCheck = d.getFullYear()+ ""+d.getMonth() +""+(d.getDate()-2);
-              if(date > dateCheck){
+
+
+
+
+              if(date > dateCheck && ((subject == Parse.User.current().get("courseOne")) || (subject == Parse.User.current().get("courseTwo")) || (subject == Parse.User.current().get("courseThree")) || (subject == Parse.User.current().get("courseFour")) || (subject == Parse.User.current().get("courseFive")) || (subject == Parse.User.current().get("courseSix")) || (subject == Parse.User.current().get("courseSeven")))){
                 map.addMarker({
                 lat: latitudeParse,
                 lng: longitudeParse,
@@ -227,7 +232,7 @@
 
     <!-- Navbar
     ================================================== -->
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -257,6 +262,7 @@
       </form>
         <div id="map">
         </div>
+
     </div>
 
 
