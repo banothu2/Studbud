@@ -88,37 +88,37 @@
 
       // Parse Data 
       Parse.initialize("78z9KHgSR3zIeFF7soCrOiHE6D99hNTJOmnJ2oay", "E8xzL8zlCs6GFfA2kEjAuBdedyZ9vS8ErBI3vT71");
-      var mapper = Parse.Object.extend("mapper");
-      var query = new Parse.Query(mapper);
+      var Map = Parse.Object.extend("Map");
+      var query = new Parse.Query(Map);
       var d = new Date();
       var dateCheck = d.getTime() - 172800000;
 
-  query.equalTo("universityKey", Parse.User.current().get("universityKey"));
+  query.equalTo("universityId", Parse.User.current().relation("Universities").parent.get("universityId"));
 
   query.find({
 
     success: function(results){
 
           for (var i = 0; i < results.length; i++) {
-            // This does not require a network access.
-            var latitudeParse = results[i].get("latitude");
-            var longitudeParse = results[i].get("longitude");
-            var name = results[i].get("name");
-            var longitudeParse = results[i].get("longitude");
-            var notes = results[i].get("notes");
-            var subject = results[i].get("subject");
-            var date = results[i].get("date");
-            var contact = results[i].get("contact");
 
+
+            var contact = results[i].get("contact") || "";
+            var date = results[i].get("date") || "";
+            var subject = results[i].get("subject") || "";
+            var notes = results[i].get("notes") || "";
+            var ending = results[i].get("endTime") || "";
+            var latitudeParse = results[i].get("latitude") || "";
+            var longitudeParse = results[i].get("longitude") || "";
+            var starting = results[i].get("startTime") || "";
 
 
               if(date > dateCheck && ((subject == Parse.User.current().get("courseOne")) || (subject == Parse.User.current().get("courseTwo")) || (subject == Parse.User.current().get("courseThree")) || (subject == Parse.User.current().get("courseFour")) || (subject == Parse.User.current().get("courseFive")) || (subject == Parse.User.current().get("courseSix")) || (subject == Parse.User.current().get("courseSeven")))){
                 map.addMarker({
                 lat: latitudeParse,
                 lng: longitudeParse,
-                title: 'Custom' + i,
+                title: 'Location ' + i,
                 infoWindow: {
-                  content: '<p> Name: '+ name +'</p>' + '<p> subject: '+ subject+ '</p>' + '<p> Notes: '+ notes + '</p>' + '<p> Contact Info: ' + contact +'</p>'
+                  content: '<p> Name: '+ "Still working on this" +'</p>' + '<p> subject: '+ subject+ '</p>' + '<p> Notes: '+ notes + '</p>' + '<p> Contact Info: ' + contact +'</p>' + '<p> Starting Time: ' + starting + '</p>' + '<p> Ending Time: ' + ending + '</p>'
                 }
                 });
               }
@@ -215,6 +215,7 @@
 });
   </script>
   <style type="text/css">
+  
     #map img {
         max-width: none;
     }

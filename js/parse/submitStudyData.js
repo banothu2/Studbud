@@ -66,8 +66,8 @@ var currentUser = Parse.User.current(); //Checks to see if user is logged in
 						function submitMapper(){
 
 			//				Parse.User.logIn($("#inputUsername").val(), $("#inputPassword").val(), {
-							var Mapper = Parse.Object.extend("mapper");
-							var mapper = new Mapper();
+							var Map = Parse.Object.extend("Map");
+							var Map = new Map();
 							 			                
 
 							var d = new Date();
@@ -78,9 +78,12 @@ var currentUser = Parse.User.current(); //Checks to see if user is logged in
 
                 			}
                 			else{
-							mapper.save({
 
-							  universityKey: Parse.User.current().get("universityKey"),
+							Map.save({
+
+							  universityId: Parse.User.current().relation("Universities").parent.get("universityId"),
+							  userId: Parse.User.current(),
+							  address: $("#inputAddress").val(),
 							  latitude: $("#inputLatitude").val(),
 							  longitude: $("#inputLongitude").val(),
 							  name: $("#inputName").val(),

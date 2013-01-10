@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Study Buddy &middot; Tutor Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="../docs/assets/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+
+/* banners
+-------------------------------------------------- */
+
+/* Base class
+------------------------- */
+.banner {
+  position: relative;
+  padding: 40px 0;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+  background: #153e7e; 
+
+}
+.banner h1 {
+  font-size: 80px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.banner p {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 30px;
+}
+
+/* Link styles (used on .masthead-links as well) */
+.banner a {
+  color: #fff;
+  color: rgba(255,255,255,.5);
+  -webkit-transition: all .2s ease-in-out;
+     -moz-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
+}
+.banner a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,255,255,.25);
+}
+
+/* Download button */
+.masthead .btn {
+  padding: 19px 24px;
+  font-size: 24px;
+  font-weight: 200;
+  color: #fff; /* redeclare to override the `.banner a` */
+  border: 0;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+  -webkit-transition: none;
+     -moz-transition: none;
+          transition: none;
+}
+.masthead .btn:hover {
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+     -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 5px rgba(0,0,0,.25);
+}
+.masthead .btn:active {
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
+     -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
+          box-shadow: inset 0 2px 4px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.1);
+}
+
+
+/* Pattern overlay
+------------------------- */
+.banner .container {
+  position: relative;
+  z-index: 2;
+}
+.banner:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
+  opacity: .4;
+}
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1) {
+
+  .banner:after {
+    background-size: 150px 150px;
+  }
+
+}
+
+/* Masthead (docs home)
+------------------------- */
+.masthead {
+  padding: 70px 0 80px;
+  margin-bottom: 0;
+  color: #fff;
+}
+.masthead h1 {
+  font-size: 120px;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+.masthead p {
+  font-size: 40px;
+  font-weight: 200;
+  line-height: 1.25;
+}
+.masthead p1 {
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 1.25;
+}
+
+/* Textual links in masthead */
+.masthead-links {
+  margin: 0;
+  list-style: none;
+}
+.masthead-links li {
+  display: inline;
+  padding: 0 10px;
+  color: rgba(255,255,255,.25);
+}
+
+
+
+/* footer custom sizing */
+.footerCustom {
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 0px;
+  border-top: 1px solid #e5e5e5;
+  background-color: #f5f5f5;
+}
+.footerCustom p {
+  margin-bottom: 0px;
+  color: #777;
+}
+.footerCustom-links {
+  margin: 10px 0;
+}
+.footerCustom-links li {
+  display: inline;
+  padding: 0 2px;
+}
+.footerCustom-links li:first-child {
+  padding-left: 0;
+}
+
+    </style>
+    <link href="../docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../docs/assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../docs/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../docs/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../docs/assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../docs/assets/ico/favicon.png">
+
+      <!-- jquery, parse, and login javascript files -->
+      <script type="text/javascript" src="../js/parse/jquery-1.8.3.min.js"></script>
+      <script type="text/javascript" src="../js/parse/parse-1.1.15.js"></script>
+      <script type="text/javascript" src="../js/parse/tutorProfile.js"></script>
+
+      <link href="../docs/assets/css/docs.css" rel="stylesheet">
+      <link href="../docs/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+      <!-- end of jquery, parse, and login javascript files -->
+
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">Study Buddy</a>
+          <div class="nav-collapse collapse" id= "navigationBar">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="banner masthead">
+  <div class="container">
+    <h1>Sign up as Tutor!</h1>
+    <p>The tutor screening process is very selective. </p>
+    <p>
+      <a href="#" class="btn btn-primary btn-large">Click here to submit your App!</a>
+    </p>
+    <p1>Expect a prompt response =)</p1>
+
+  </div>
+</div>
+
+ <!--    <div class="container form-register" id="tutorPage">
+
+      <form class="form-horizontal">
+        <fieldset>
+          <div id="legend" class="">
+            <legend class="">Course One</legend>
+          </div>
+        <div class="control-group">
+          <label class="control-label">Professor</label>
+          <div class="controls">
+            <select class="input-xlarge">
+              <option>Enter</option>
+              <option>Your</option>
+              <option>Options</option>
+              <option>Here!</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-group">
+        <label class="control-label">Course Name</label>
+          <div class="controls">
+            <select class="input-xlarge">
+              <option>Enter</option>
+              <option>Your</option>
+              <option>Options</option>
+              <option>Here!</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Course Grade</label>
+          <div class="controls">
+            <select class="input-xlarge">
+              <option>Enter</option>
+              <option>Your</option>
+              <option>Options</option>
+              <option>Here!</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Hourly Rate</label>
+          <div class="controls">
+            <div class="input-prepend">
+              <span class="add-on">$</span>
+              <input class="span2" placeholder="15.00" id="prependedInput" type="text">
+            </div>
+            <p class="help-block">Around $10.00 is optimal</p>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Arrangement</label>
+          <div class="controls">
+            <div class="textarea">
+              <textarea type="" class=""> </textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Email or Phone</label>
+          <div class="controls">
+            <div class="input-prepend">
+              <span class="add-on">@</span>
+              <input class="span2" placeholder="bjohnson@illinois.edu" id="prependedInput" type="text">
+            </div>
+            <p class="help-block">Your contact preference</p>
+          </div>
+        </div>
+        </fieldset>
+                <fieldset>
+          <div id="legend" class="">
+            <legend class="">Course Two</legend>
+          </div>
+        <div class="control-group">
+          <label class="control-label">Professor</label>
+          <div class="controls">
+            <select class="input-xlarge">
+              <option>Enter</option>
+              <option>Your</option>
+              <option>Options</option>
+              <option>Here!</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-group">
+        <label class="control-label">Course Name</label>
+          <div class="controls">
+            <select class="input-xlarge">
+              <option>Enter</option>
+              <option>Your</option>
+              <option>Options</option>
+              <option>Here!</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Course Grade</label>
+          <div class="controls">
+            <select class="input-xlarge">
+              <option>Enter</option>
+              <option>Your</option>
+              <option>Options</option>
+              <option>Here!</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Hourly Rate</label>
+          <div class="controls">
+            <div class="input-prepend">
+              <span class="add-on">$</span>
+              <input class="span2" placeholder="15.00" id="prependedInput" type="text">
+            </div>
+            <p class="help-block">Around $10.00 is optimal</p>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Arrangement</label>
+          <div class="controls">
+            <div class="textarea">
+              <textarea type="" class=""> </textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Email or Phone</label>
+          <div class="controls">
+            <div class="input-prepend">
+              <span class="add-on">@</span>
+              <input class="span2" placeholder="bjohnson@illinois.edu" id="prependedInput" type="text">
+            </div>
+            <p class="help-block">Your contact preference</p>
+          </div>
+        </div>
+        </fieldset>
+
+      </form>
+
+      </div>
+ -->
+        
+
+    <footer class="footerCustom">      
+      <div class="container">
+        <p>Copyright © 2013 Study Buddy | All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../docs/assets/js/jquery.js"></script>
+    <script src="../docs/assets/js/bootstrap-transition.js"></script>
+    <script src="../docs/assets/js/bootstrap-alert.js"></script>
+    <script src="../docs/assets/js/bootstrap-modal.js"></script>
+    <script src="../docs/assets/js/bootstrap-dropdown.js"></script>
+    <script src="../docs/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../docs/assets/js/bootstrap-tab.js"></script>
+    <script src="../docs/assets/js/bootstrap-tooltip.js"></script>
+    <script src="../docs/assets/js/bootstrap-popover.js"></script>
+    <script src="../docs/assets/js/bootstrap-button.js"></script>
+    <script src="../docs/assets/js/bootstrap-collapse.js"></script>
+    <script src="../docs/assets/js/bootstrap-carousel.js"></script>
+    <script src="../docs/assets/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>

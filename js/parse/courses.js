@@ -25,7 +25,6 @@ $(document).ready(
 
 				if(email != "" || email == null){
 						$("#coursesPage").empty();
-						$("#coursesPage").append("<form class='form-horizontal' id='register'><h2 class='form-register-heading' ></h2><h4 class='form-register-heading'>Please add your semester courses</h4><div class='control-group' id='courseOneDiv'></div><div class='control-group' id='courseTwoDiv'></div><div class='control-group' id='courseThreeDiv'></div><div class='control-group' id='courseFourDiv'></div><div class='control-group' id='courseFiveDiv'></div><div class='control-group' id='courseSixDiv'></div><div class='control-group' id='courseSevenDiv'></div><div id='errorOrSuccess'></div></form><div id='buttonAdd'><button type='margin' class='btn btn-large btn-block btn-primary' type='button'>Register</button></div>");
 						query.find({	
 							success: function(){
 								$("#welcome").empty(); // empty the entire table - useful when the page is update and you want to run the jquery append code without adding extra garbage
@@ -48,8 +47,8 @@ $(document).ready(
 								var courseFive = Parse.User.current().get("courseFive") || "Independent Study";
 								var courseSix = Parse.User.current().get("courseSix") || "Independent Study";
 								var courseSeven = Parse.User.current().get("courseSeven") || "Independent Study";
-
-								$("#welcome").append("Welcome "+ firstName + " " + lastName); // Add lines for saying "Welcome firstName lastName"
+								
+								$("#coursesPage").append("<form class='form-horizontal' id='register'><h2 class='form-register-heading' ></h2><h4 class='form-register-heading'>Please add your semester courses " + firstName + " " + lastName + "</h4><div class='control-group' id='courseOneDiv'></div><div class='control-group' id='courseTwoDiv'></div><div class='control-group' id='courseThreeDiv'></div><div class='control-group' id='courseFourDiv'></div><div class='control-group' id='courseFiveDiv'></div><div class='control-group' id='courseSixDiv'></div><div class='control-group' id='courseSevenDiv'></div><div id='errorOrSuccess'></div></form><div id='buttonAdd'><button type='margin' class='btn btn-large btn-block btn-primary' type='button'>Register</button></div>");
 								$("#courseOneDiv").append("<label class='control-label' for='courseOne'>Course One</label><div class='controls'><input type='text' id='courseOne' placeholder='Math 231' value= '"+courseOne+"' required></div>"); // code to append for the input form with the course fields
 								$("#courseTwoDiv").append("<label class='control-label' for='courseTwo'>Course Two</label><div class='controls'><input type='text' id='courseTwo' placeholder='Chem 102' value= '"+courseTwo+"' required></div>"); // code to append for the input form with the course fields
 								$("#courseThreeDiv").append("<label class='control-label' for='courseThree'>Course Three</label><div class='controls'><input type='text' id='courseThree' placeholder='CS 101' value= '"+courseThree+"' required></div>"); // code to append for the input form with the course fields
@@ -130,7 +129,7 @@ $(document).ready(
 							var courseFive = Parse.User.current().get("courseFive") || "Independent Study";
 							var courseSix = Parse.User.current().get("courseSix") || "Independent Study";
 							var courseSeven = Parse.User.current().get("courseSeven") || "Independent Study";
-								
+							
 							$("#universityDiv").append("<label class='control-label' for='university'>University</label><div class='controls'><select class='span4' id='inputUniversity'><option>University of Illinois Urbana-Champaign</option><option>Case Western Reserve University</option></select></div>");
 							$("#firstNameDiv").append("<label class='control-label' for='firstName'>First Name</label><div class='controls'><input type='text' id='firstName' placeholder='Ben' value= '"+firstName+"' required></div>"); // code to append for the input form with the course fields
 							$("#lastNameDiv").append("<label class='control-label' for='lastName'>Last Name</label><div class='controls'><input type='text' id='lastName' placeholder='Johnson' value= '"+lastName+"' required></div>"); // code to append for the input form with the course fields

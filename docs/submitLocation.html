@@ -160,8 +160,13 @@
                     });
                     $("#modalLatitude").empty();
                     $("#modalLongitude").empty();
+                    $("#modalAddress").empty();
+
                     $("#modalLatitude").append("<input class='input-medium search-query'  type='text' id='inputLatitude' value='"+latlng.lat()+"' disabled>");
                     $("#modalLongitude").append("<input class='input-medium search-query'  type='text' id='inputLongitude' value='"+ latlng.lng()+ "' disabled>");
+                    $("#modalAddress").append("<input class = 'input-medium search-query' type= 'text' id='inputAddress' value='" + $('#address').val() + "' disabled>");
+
+
                   //alert(latlng.lat() + " " + latlng.lng());
                   }
                 }
@@ -273,6 +278,12 @@
                   </div>
                 </div>
                 <div class="control-group">
+                  <label class="control-label" for="inputAddress">Address</label>
+                  <div class="controls" id="modalAddress">
+                    <input class='input-medium search-query'  type='text' id='inputAddress' placeholder='Unable to Decode address' disabled>
+                  </div>
+                </div>
+                <div class="control-group">
                   <div class="controls" >
                     <button type="button" id="viewOnMap" class="btn btn-medium btn-primary">View On Map</button>
                   </div>
@@ -335,7 +346,7 @@
       </div>
 <!-- Modal end -->
 
-        <div id="map">
+        <div id="map" class="mapSmall">
         </div>
 </div>
 

@@ -47,7 +47,10 @@ $(document).ready(
 						$("#tabHeader").append("<li class=''><a href='#tab" +j+"' data-toggle='tab'>"+ inputCourse+"</a></li>");
 
 					}
+
 					var query = new Parse.Query(User);
+
+					    query.equalTo("universityId", Parse.User.current().relation("Universities").parent.get("universityId"));
 						query.find({
 
 					    success: function(results){
